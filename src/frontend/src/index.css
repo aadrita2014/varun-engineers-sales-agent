@@ -1,0 +1,249 @@
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.18 0.04 245;
+    --foreground: 0.97 0.005 245;
+    --card: 0.22 0.035 245;
+    --card-foreground: 0.97 0.005 245;
+    --popover: 0.22 0.035 245;
+    --popover-foreground: 0.97 0.005 245;
+    --primary: 0.38 0.16 25;
+    --primary-foreground: 0.97 0.005 0;
+    --secondary: 0.26 0.04 245;
+    --secondary-foreground: 0.85 0.02 245;
+    --muted: 0.26 0.04 245;
+    --muted-foreground: 0.65 0.025 245;
+    --accent: 0.38 0.16 25;
+    --accent-foreground: 0.97 0.005 0;
+    --destructive: 0.45 0.2 25;
+    --destructive-foreground: 0.97 0.005 0;
+    --border: 0.28 0.04 245;
+    --input: 0.28 0.04 245;
+    --ring: 0.38 0.16 25;
+    --radius: 0.75rem;
+    --chart-1: 0.38 0.16 25;
+    --chart-2: 0.55 0.14 200;
+    --chart-3: 0.65 0.12 140;
+    --chart-4: 0.7 0.13 80;
+    --chart-5: 0.6 0.15 290;
+    --sidebar: 0.15 0.035 245;
+    --sidebar-foreground: 0.97 0.005 245;
+    --sidebar-primary: 0.38 0.16 25;
+    --sidebar-primary-foreground: 0.97 0.005 0;
+    --sidebar-accent: 0.26 0.04 245;
+    --sidebar-accent-foreground: 0.85 0.02 245;
+    --sidebar-border: 0.28 0.04 245;
+    --sidebar-ring: 0.38 0.16 25;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+}
+
+/* Mobile shell centering */
+.mobile-shell {
+  max-width: 430px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+  background: oklch(0.18 0.04 245);
+  box-shadow: 0 0 60px oklch(0 0 0 / 0.5);
+}
+
+/* Splash animations */
+@keyframes splashFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splashSubtitle {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.splash-logo {
+  animation: splashFadeIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.splash-subtitle {
+  animation: splashSubtitle 0.6s ease-out 0.5s both;
+}
+
+.splash-tagline {
+  animation: splashSubtitle 0.6s ease-out 0.8s both;
+}
+
+/* Tile press effect */
+.tile-press {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  cursor: pointer;
+}
+.tile-press:active {
+  transform: scale(0.96);
+}
+
+/* OTP input override */
+.otp-input-group {
+  gap: 8px;
+}
+
+/* Bar chart bars */
+.perf-bar {
+  transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Scrollbar hide */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==================== ADMIN PANEL STYLES ==================== */
+
+.admin-app-bg {
+  background: oklch(0.96 0.005 245);
+}
+
+.admin-sidebar {
+  background: oklch(0.13 0.03 245);
+  border-right: 1px solid oklch(0.2 0.03 245);
+  overflow-y: auto;
+}
+
+.admin-header {
+  background: #ffffff;
+  border-color: oklch(0.9 0.01 245);
+}
+
+.admin-table-card {
+  background: #ffffff;
+  border: 1px solid oklch(0.9 0.01 245);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 4px oklch(0 0 0 / 0.06);
+}
+
+.admin-stat-card {
+  background: #ffffff;
+  border: 1px solid oklch(0.9 0.01 245);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 4px oklch(0 0 0 / 0.06);
+}
+
+.admin-agent-card {
+  background: #ffffff;
+  border: 1px solid oklch(0.9 0.01 245);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 4px oklch(0 0 0 / 0.06);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.admin-agent-card:hover {
+  box-shadow: 0 4px 16px oklch(0 0 0 / 0.1);
+  transform: translateY(-1px);
+}
+
+.admin-btn-primary {
+  background: oklch(0.42 0.18 22);
+  color: #fff;
+  border: none;
+}
+.admin-btn-primary:hover {
+  background: oklch(0.48 0.18 22);
+}
+.admin-btn-primary:disabled {
+  background: oklch(0.65 0.06 22);
+}
+
+.admin-input {
+  background: #fff;
+  border-color: oklch(0.85 0.02 245);
+  color: oklch(0.15 0.03 245);
+}
+.admin-input:focus {
+  border-color: oklch(0.42 0.18 22);
+  box-shadow: 0 0 0 2px oklch(0.42 0.18 22 / 0.15);
+}
+
+.admin-tabs [data-state="active"] {
+  background: oklch(0.42 0.18 22);
+  color: #fff;
+}
+
+.admin-bg {
+  background: linear-gradient(
+    135deg,
+    oklch(0.13 0.03 245) 0%,
+    oklch(0.16 0.04 245) 100%
+  );
+}
+
+.admin-login-card {
+  background: #ffffff;
+  border: 1px solid oklch(0.9 0.01 245);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 20px 60px oklch(0 0 0 / 0.35);
+}
